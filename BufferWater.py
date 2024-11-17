@@ -11,11 +11,11 @@ fcList = arcpy.ListFeatureClasses() # This creates an open feature class list th
 
 # Create a loop to buffer Lakes and Streams
 
-bufferList = [] # This line creates and open list feature that will be appneded to as the correct feature classes are located in the data.
+bufferList = [] # This line creates and open list feature that will be appended to as the correct feature classes are located in the data.
 
-for fc in fcList: # a for loop has been created to process though the data to find the information needed to complete the buffer.
-    if fc == "Lakes" or fc == "Streams": # this line is searching for lakes and streams if it finds one then then it processed to the next line.
+for fc in fcList: # A for loop has been created to process though the data to find the information needed to complete the buffer.
+    if fc == "Lakes" or fc == "Streams": # This line is searching for lakes and streams if it finds one then then it processed to the next line.
         arcpy.Buffer_analysis(fc, fc + "Buffer", "1000 meters", "", "", "all") # In this line the lakes or streams are buffered and set as a temp value for the next line
-        bufferList.append(fc + "Buffer") # Thise line take the above output and appends it to the empty list created in line 14.
+        bufferList.append(fc + "Buffer") # This line take the above output and appends it to the empty list created in line 14.
 
-arcpy.Union_analysis(bufferList, "WaterBuffers") #This union process will combine all the "bufferList" and put it out as a new feature class called "WaterBuffer."
+arcpy.Union_analysis(bufferList, "WaterBuffers") # This union process will combine all the "bufferList" and put it out as a new feature class called "WaterBuffer."
